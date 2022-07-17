@@ -14,6 +14,10 @@ const SCISSORS = {
 	win: "paper",
 };
 
+let playerWins = 0;
+let computerWins = 0;
+let totalDraw = 0;
+
 const OPTIONS = [ROCK, PAPER, SCISSORS];
 
 function getComputerChoice() {
@@ -29,16 +33,30 @@ function getPlayerChoice(playerChoice) {
 
 function playRound(playerSelection, computerSelection) {
 	if (playerSelection.win === computerSelection.name) {
+		playerWins++;
 		return `You win. Computer picked ${computerSelection.name}. You picked ${playerSelection.name}.`;
 	} else if (playerSelection.name === computerSelection.win) {
+		computerWins++;
 		return `Computer wins. Computer picked ${computerSelection.name}. You picked ${playerSelection.name}.`;
 	} else {
+		totalDraw++;
 		return `It's a draw. Both picked ${playerSelection.name}.`;
 	}
 }
 
 for (let i = 0; i < 5; i++) {
-    const playerSelection = getPlayerChoice(window.prompt("Pick a weapon (Rock, Paper, Scissors):"));
+	const playerSelection = getPlayerChoice(
+		window.prompt("Pick a weapon (Rock, Paper, Scissors):")
+	);
+	if (playerSelection === undefined) {
+		window.alert("Please pick either Rock, Paper or Scissors.");
+		continue;
+	}
 	const computerSelection = getComputerChoice();
-	window.alert(`Round: ${i+1}\n${playRound(playerSelection, computerSelection)}`);
+	let results = playRound(playerSelection, computerSelection);
+	window.alert(
+		`Round: ${
+			i + 1
+		} | Player Wins: ${playerWins} | Computer Wins: ${computerWins} | Draw: ${totalDraw} \n${results}`
+	);
 }
