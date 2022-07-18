@@ -1,0 +1,54 @@
+body {
+	box-sizing: border-box;
+	background-color: black;
+	font-weight: 400;
+	font-family: "Edu NSW ACT Foundation", cursive;
+	color: white;
+	margin: 30px 100px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: space-between;
+}
+
+header {
+	margin: 10px 300px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+header img {
+	width: 100px;
+}
+
+.game-title {
+	font-weight: 700;
+	font-size: 50px;
+}
+
+.game-description {
+	font-size: 25px;
+	text-align: center;
+}
+
+main h1 {
+	text-align: center;
+}
+
+.weapons {
+	display: flex;
+	gap: 10px;
+}
+
+.weapons .weapon {
+	background-color: gray;
+	border: none;
+    padding: 20px;
+    border-radius: 35px;
+	margin: 10px;
+}
+
+.weapons .weapon img {
+	width: 150px;
+}
