@@ -32,23 +32,72 @@ header img {
 	text-align: center;
 }
 
+main {
+	margin: 20px;
+}
+
 main h1 {
 	text-align: center;
 }
 
 .weapons {
 	display: flex;
-	gap: 10px;
+	justify-content: space-evenly;
 }
 
 .weapons .weapon {
-	background-color: gray;
+	background-color: rgb(227, 178, 97);
 	border: none;
-    padding: 20px;
-    border-radius: 35px;
+	padding: 20px;
+	border-radius: 35px;
 	margin: 10px;
+	cursor: pointer;
+}
+
+.weapons .weapon:hover {
+	background-color: rgb(227, 178, 97, 0.5);
 }
 
 .weapons .weapon img {
 	width: 150px;
+}
+
+body hr {
+	width: 100%;
+}
+
+.round-details {
+	font-size: 40px;
+	width: 1000px;
+	display: none;
+	justify-content: space-evenly;
+}
+
+#round-results {
+	margin-top: 20px;
+	text-align: center;
+	font-size: 25px;
+}
+
+.game-controls {
+	display:  none;
+}
+
+.pre-game {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	margin: 10px 20px;
+}
+.pre-game button {
+	border: none;
+	background-color: rgb(227, 178, 97);
+	padding: 10px 20px;
+	font-size: 30px;	
+	border-radius: 28px;
+	font-family: inherit;
+	cursor: pointer;
+}
+.pre-game button:hover {
+	background-color: rgb(227, 178, 97, 0.5);
 }

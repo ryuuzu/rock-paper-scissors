@@ -14,9 +14,12 @@ const SCISSORS = {
 	win: "paper",
 };
 
-let playerWins = 0;
-let computerWins = 0;
-let totalDraw = 0;
+let currentRound, playerWins, computerWins, totalDraw;
+let roundResults = document.querySelector("#round-results");
+let roundDetails = document.querySelector(".round-details");
+let roundNumber = document.querySelector("#round-number");
+let playerWin = document.querySelector("#player-wins");
+let godWin = document.querySelector("#god-wins");
 
 const OPTIONS = [ROCK, PAPER, SCISSORS];
 
@@ -31,47 +34,87 @@ function getPlayerChoice(playerChoice) {
 	return OPTIONS.find((option) => option.name === playerChoice);
 }
 
+function updateRoundDetails() {
+	if (roundDetails.style.display === "") {
+		roundDetails.style.display = "flex";
+	}
+	roundNumber.innerHTML = currentRound;
+	playerWin.innerHTML = playerWins;
+	godWin.innerHTML = computerWins;
+	if (currentRound === 5) {
+		setTimeout(declareWinner, 100);
+	}
+}
+
 function playRound(playerSelection, computerSelection) {
+	currentRound++;
 	if (playerSelection.win === computerSelection.name) {
 		playerWins++;
-		return `You win. Computer picked ${computerSelection.name}. You picked ${playerSelection.name}.`;
+		roundResults.innerHTML = `You win. The Gods picked ${computerSelection.name}. You picked ${playerSelection.name}.`;
 	} else if (playerSelection.name === computerSelection.win) {
 		computerWins++;
-		return `Computer wins. Computer picked ${computerSelection.name}. You picked ${playerSelection.name}.`;
+		roundResults.innerHTML = `The Gods win. The Gods picked ${computerSelection.name}. You picked ${playerSelection.name}.`;
 	} else {
 		totalDraw++;
-		return `It's a draw. Both picked ${playerSelection.name}.`;
+		roundResults.innerHTML = `It's a draw. Both picked ${playerSelection.name}.`;
 	}
+	updateRoundDetails();
+}
+
+function declareWinner() {
+	alert("Someone wins");
 }
 
 function gameStart() {
-	for (let i = 0; i < 5; i++) {
-		const playerSelection = getPlayerChoice(
-			window.prompt("Pick a weapon (Rock, Paper, Scissors):")
-		);
-		if (playerSelection === undefined) {
-			window.alert("Please pick either Rock, Paper or Scissors.");
-			continue;
-		}
-		const computerSelection = getComputerChoice();
-		let results = playRound(playerSelection, computerSelection);
-		window.alert(
-			`Round: ${
-				i + 1
-			} | Player Wins: ${playerWins} | Computer Wins: ${computerWins} | Draw: ${totalDraw} \n${results}`
-		);
-	}
+	let preGame = document.querySelector(".pre-game");
+	let gameControls = document.querySelector(".game-controls");
+
+	currentRound = 0;
+	playerWins = 0;
+	computerWins = 0;
+	totalDraw = 0;
+
+	preGame.style.display = "none";
+	gameControls.style.display = "block";
+
+	// for (let i = 0; i < 5; i++) {
+	// 	const playerSelection = getPlayerChoice(
+	// 		window.prompt("Pick a weapon (Rock, Paper, Scissors):")
+	// 	);
+	// 	if (playerSelection === undefined) {
+	// 		window.alert("Please pick either Rock, Paper or Scissors.");
+	// 		continue;
+	// 	}
+	// 	const computerSelection = getComputerChoice();
+	// 	let results = playRound(playerSelection, computerSelection);
+	// 	window.alert(
+	// 		`Round: ${
+	// 			i + 1
+	// 		} | Player Wins: ${playerWins} | Computer Wins: ${computerWins} | Draw: ${totalDraw} \n${results}`
+	// 	);
+	// }
 }
+
+let startbutton = document.querySelector("#game-start");
+startbutton.addEventListener("click", () => {
+	gameStart();
+});
 
 scissorsButton = document.querySelector("#scissors");
 scissorsButton.addEventListener("click", () => {
-	console.log("scissors");
+	const playerChoice = getPlayerChoice("scissors");
+	const computerChoice = getComputerChoice();
+	playRound(playerChoice, computerChoice);
 });
 paperButton = document.querySelector("#paper");
 paperButton.addEventListener("click", () => {
-	console.log("paper");
+	const playerChoice = getPlayerChoice("paper");
+	const computerChoice = getComputerChoice();
+	playRound(playerChoice, computerChoice);
 });
 rockButton = document.querySelector("#rock");
 rockButton.addEventListener("click", () => {
-	console.log("rock");
+	const playerChoice = getPlayerChoice("rock");
+	const computerChoice = getComputerChoice();
+	playRound(playerChoice, computerChoice);
 });

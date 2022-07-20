@@ -26,12 +26,25 @@
             rock, paper, scissors. The match will be held for 5 rounds. Whoever wins the most rounds shall be
             declared the victor.</p>
     </header>
+    <hr>
     <main>
-        <h1>Choose Your Weapon.</h1>
-        <div class="weapons">
-            <button class="weapon" id="rock"><img src="./assets/rock.png" alt="Rock Weapon"></button>
-            <button class="weapon" id="paper"><img src="./assets/paper.png" alt="Paper Weapon"></button>
-            <button class="weapon" id="scissors"><img src="./assets/scissor.png" alt="Scissor Weapon"></button>
+        <div class="pre-game">
+            <h1>Are you ready to carry the fate of the humanity on your shoulders?</h1>
+            <button id="game-start">Yes, Bring it on!</button>
+        </div>
+        <div class="game-controls">
+            <div class="round-details">
+                <div class="round-detail">Round: <span id="round-number">1</span></div>
+                <div class="round-detail">Player Wins: <span id="player-wins">1</span></div>
+                <div class="round-detail">God Wins: <span id="god-wins">1</span></div>
+            </div>
+            <div id="round-results"></div>
+            <h1>Choose Your Weapon.</h1>
+            <div class="weapons">
+                <button class="weapon" id="rock"><img src="./assets/rock.png" alt="Rock Weapon"></button>
+                <button class="weapon" id="paper"><img src="./assets/paper.png" alt="Paper Weapon"></button>
+                <button class="weapon" id="scissors"><img src="./assets/scissor.png" alt="Scissor Weapon"></button>
+            </div>
         </div>
     </main>
     <footer>
