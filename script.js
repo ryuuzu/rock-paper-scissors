@@ -62,7 +62,14 @@ function playRound(playerSelection, computerSelection) {
 }
 
 function declareWinner() {
-	alert("Someone wins");
+	if (playerWins > computerWins) {
+		alert("Humanity has prevailed for yet another 1000 years of survival.");
+	} else if (computerWins > playerWins) {
+		alert("The Gods have won and wiped out the Humanity.");
+	} else {
+		alert("The battle has ended in a tie. The situation is yet to unfold.");
+	}
+	location.reload();
 }
 
 function gameStart() {
